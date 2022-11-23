@@ -19,8 +19,10 @@ $vc->listarProductos();
 $vc->incluirSocio("Amancio Ortega");
 $vc->incluirSocio("Pablo Picasso", 2);
 
-//! He cambiado el número de socio 1 al 2 para las siguientes comprobaciones, 
-//! ya que lo tengo diseñado para que los identificadores comiencen desde 1 y no desde 0
+/* 
+! He cambiado el número de socio 1 al 2 para las siguientes comprobaciones, 
+! ya que lo tengo diseñado para que los identificadores comiencen desde 1 y no desde 0
+*/ 
 $vc->alquilaSocioProducto(2, 2);
 $vc->alquilaSocioProducto(2, 3);
 //alquilo otra vez el soporte 2 al socio 1. 
