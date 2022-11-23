@@ -43,7 +43,9 @@ class Cliente
             echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
             return true;
         } else {
-            echo "<br>El producto ya lo tienes alquilado o has superado el máximo de alquileres concurrentes<br>";
+            echo $this->tieneAlquilado($s) == true ?  
+            "<br>El producto ya lo tienes alquilado<br>" : 
+            "<br>Has superado el máximo de alquileres concurrentes<br>";
             return false;
         }
     }
