@@ -1,6 +1,8 @@
-<?php 
+<?php
+
 namespace app;
 
-interface Resumible{
+interface Resumible
+{
     public function muestraResumen();
 }

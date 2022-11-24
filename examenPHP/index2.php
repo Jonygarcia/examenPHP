@@ -1,5 +1,5 @@
 <?php
-include_once "Disco.php";
+include_once "autoload.php";
 
 use app\Disco;
 

@@ -1,8 +1,4 @@
 <?php
-namespace app;
-
-include_once "Resumible.php";
-
 /*
 * Ejercicio 5:
 * Hacemos abstracta la clase Soporte, esto no permitirá crear objetos de tipo
@@ -17,6 +13,11 @@ include_once "Resumible.php";
 * muestraResumen(), no es necesario que sus clases hijas la implementen, ya que las 
 * interfaces soportan herencias. 
 */
+
+namespace app;
+
+include_once "autoload.php";
+
 abstract class Soporte implements Resumible
 {
     public $titulo;

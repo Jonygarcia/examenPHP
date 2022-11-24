@@ -1,15 +1,11 @@
 <?php
 //Includes
-include_once "Cliente.php";
-include_once "CintaVideo.php";
-include_once "Juego.php";
-include_once "Disco.php";
+include_once "autoload.php";
 
 use app\Cliente;
 use app\CintaVideo;
 use app\Juego;
 use app\Disco;
-
 
 //instanciamos un par de objetos cliente
 
@@ -22,9 +18,9 @@ echo "<br>El identificador del cliente 2 es: " . $cliente2->getNumero();
 
 //instancio algunos soportes 
 $soporte1 = new CintaVideo("Los cazafantasmas", 23, 3.5, 107);
-$soporte2 = new Juego("The Last of Us Part II", 26, 49.99, "PS4", 1, 1);  
+$soporte2 = new Juego("The Last of Us Part II", 26, 49.99, "PS4", 1, 1);
 $soporte3 = new Disco("Origen", 24, 15, "es,en,fr", "16:9");
-$soporte4 = new Disco("El Imperio Contraataca", 4, 3, "es,en","16:9");
+$soporte4 = new Disco("El Imperio Contraataca", 4, 3, "es,en", "16:9");
 
 //alquilo algunos soportes
 $cliente1->alquilar($soporte1);
@@ -39,7 +35,7 @@ $cliente1->alquilar($soporte4);
 //este soporte no lo tiene alquilado
 $cliente1->devolver(4);
 // devuelvo un soporte que sí que tiene alquilado 
-$cliente1->devolver(24); 
+$cliente1->devolver(24);
 //! No hay ningún soporte con el número 2, lo cambio por el 24 que es el soporte 3
 //alquilo otro soporte
 $cliente1->alquilar($soporte4);

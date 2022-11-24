@@ -1,5 +1,5 @@
 <?php
-include_once "Juego.php";
+include_once "autoload.php";
 
 use app\Juego;
 

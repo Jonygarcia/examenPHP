@@ -1,9 +1,11 @@
-<?php 
+<?php
+
 namespace app;
 
-include_once "Soporte.php";
+include_once "autoload.php";
 
-class CintaVideo extends Soporte{
+class CintaVideo extends Soporte
+{
 
     private $duracion;
 
@@ -18,5 +20,4 @@ class CintaVideo extends Soporte{
         parent::muestraResumen();
         echo "Duración: " . $this->duracion . " minutos<br>";
     }
-
 }
