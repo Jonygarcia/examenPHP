@@ -1,4 +1,6 @@
 <?php
+namespace app;
+
 /*
 * Ejercicio 5:
 * Hacemos abstracta la clase Soporte, esto no permitirá crear objetos de tipo
@@ -14,7 +16,7 @@
 * interfaces soportan herencias. 
 */
 
-include_once "../autoload.php";
+include_once "autoload.php";
 
 abstract class Soporte implements Resumible
 {
