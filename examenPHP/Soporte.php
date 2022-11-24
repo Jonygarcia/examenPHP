@@ -1,5 +1,20 @@
 <?php
-class Soporte
+include_once "Resumible.php";
+/*
+* Ejercicio 5:
+* Hacemos abstracta la clase Soporte, esto no permitirá crear objetos de tipo
+* Soporte pero si podremos seguir trabajando creando objetos de sus clases hijas
+* y utilizando sus métodos. Para que todo funcione correctamente tenemos que comentar
+* las primeras líneas del index1, para así evitar crear un objeto Soporte.
+*/
+
+/*
+* Ejercicio 6:
+* Implementamos la interfaz Resumible para obligar a que esta clase tenga un método
+* muestraResumen(), no es necesario que sus clases hijas la implementen, ya que las 
+* interfaces soportan herencias. 
+*/
+abstract class Soporte implements Resumible
 {
     public $titulo;
     protected $numero;

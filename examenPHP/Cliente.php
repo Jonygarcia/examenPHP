@@ -73,7 +73,7 @@ class Cliente
 
     public function listaAlquileres()
     {
-        echo "<br>Actualmente tienes " . count($this->soportesAlquilados) . " soportes alquilados<br>";
+        echo "<br>Actualmente tiene " . count($this->soportesAlquilados) . " soportes alquilados<br>";
         foreach ($this->soportesAlquilados as $value) {
             $value->muestraResumen();
         }

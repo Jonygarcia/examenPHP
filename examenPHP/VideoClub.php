@@ -5,7 +5,6 @@ include_once "CintaVideo.php";
 include_once "Disco.php";
 include_once "Juego.php";
 
-
 class Videoclub
 {
 
@@ -76,6 +75,10 @@ class Videoclub
                 foreach ($this->productos as $producto) {
                     if ($producto->getNumero() == $numeroSoporte) {
                         $cliente->alquilar($producto);
+                        /* 
+                        Return para salir de la función si ha sido encontrado,
+                        y la función de alquilar del cliente se encargará de mostrar el mensaje
+                        */
                         return;
                     }
                 }
