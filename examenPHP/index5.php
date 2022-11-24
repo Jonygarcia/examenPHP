@@ -1,8 +1,6 @@
 <?php
 include_once "autoload.php"; // No incluimos nada más
 
-use app\VideoClub;
-
 $vc = new Videoclub("Severo 8A");
 
 //voy a incluir unos cuantos soportes de prueba 

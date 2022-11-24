@@ -14,9 +14,7 @@
 * interfaces soportan herencias. 
 */
 
-namespace app;
-
-include_once "autoload.php";
+include_once "../autoload.php";
 
 abstract class Soporte implements Resumible
 {
