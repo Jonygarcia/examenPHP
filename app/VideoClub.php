@@ -2,11 +2,15 @@
 
 namespace app;
 
+use util\ClienteNoEncontradoException;
+use util\CupoSuperadoException;
+use util\SoporteNoEncontradoException;
+use util\SoporteYaAlquiladoException;
+
 include_once "autoload.php";
 
 class Videoclub
 {
-
     private $nombre;
     private $productos = [];
     private $numProductos = 0;
@@ -69,18 +73,38 @@ class Videoclub
 
     public function alquilaSocioProducto($numeroCliente, $numeroSoporte)
     {
-        foreach ($this->socios as $cliente) {
-            if ($cliente->getNumero() == $numeroCliente) {
-                foreach ($this->productos as $producto) {
-                    if ($producto->getNumero() == $numeroSoporte) {
-                        $cliente->alquilar($producto);
-                        return $this; // Para que no muestre mensajes de error si se completa correctamente.             
+        try {
+            $saveCliente = "";
+            $saveProducto = "";
+
+            foreach ($this->socios as $cliente) {
+                if ($cliente->getNumero() == $numeroCliente) {
+                    $saveCliente = $cliente;
+                    try {
+                        foreach ($this->productos as $producto) {
+                            if ($producto->getNumero() == $numeroSoporte) {
+                                $saveProducto = $producto;
+                                $cliente->alquilar($producto);
+                                return $this; // Para que no muestre mensajes de error si se completa correctamente.             
+                            }
+                        }
+                    } catch (SoporteYaAlquiladoException $e) {
+                        echo $e->getMensaje();
+                    } catch (CupoSuperadoException $e) {
+                        echo $e->getMensaje();
                     }
                 }
-                echo "<br>El producto " . $numeroSoporte . " aún no ha sido registrado<br>";
             }
+
+            if ($saveCliente === ""){
+                throw new ClienteNoEncontradoException("El número no coincide con ninguno de los clientes registrados<br>");
+            } else if ($saveProducto === "") {
+                throw new SoporteNoEncontradoException("El número no coincide con ninguno de los soportes registrados<br>");
+            }
+            
+        } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMensaje();
         }
-        echo "<br>El cliente " . $numeroCliente . " aún no ha sido registrado<br>";
         return $this;
     }
 }

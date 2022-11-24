@@ -6,7 +6,6 @@ include_once "autoload.php";
 
 class CintaVideo extends Soporte
 {
-
     private $duracion;
 
     public function __construct($titulo, $numero, $precio, $duracion)

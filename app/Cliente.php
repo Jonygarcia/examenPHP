@@ -1,10 +1,12 @@
 <?php
 
 namespace app;
+use util\CupoSuperadoException;
+use util\SoporteNoEncontradoException;
+use util\SoporteYaAlquiladoException;
 
 class Cliente
 {
-
     public $nombre;
     private $numero;
     private $soportesAlquilados = [];
@@ -45,8 +47,8 @@ class Cliente
             echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
         } else {
             echo $this->tieneAlquilado($s) == true ?
-                "<br>El producto ya lo tienes alquilado<br>" :
-                "<br>Has superado el máximo de alquileres concurrentes<br>";
+                throw new SoporteYaAlquiladoException("El soporte " . $s->titulo . " ya lo tienes alquilado<br>") :
+                throw new CupoSuperadoException("Has superado el número máximo de alquileres concurrentes<br>");
         }
         return $this;
     }
@@ -67,9 +69,7 @@ class Cliente
                 return true;
             }
         }
-
-        echo "<br>El soporte que quiere devolver no lo tiene alquilado<br>";
-        return false;
+        throw new SoporteNoEncontradoException("El soporte que quiere devolver no lo tiene alquilado<br>");
     }
 
     public function listaAlquileres()
