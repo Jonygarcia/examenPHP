@@ -1,5 +1,8 @@
 <?php
+namespace app;
+
 include_once "Resumible.php";
+
 /*
 * Ejercicio 5:
 * Hacemos abstracta la clase Soporte, esto no permitirá crear objetos de tipo

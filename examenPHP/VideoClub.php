@@ -1,4 +1,6 @@
 <?php
+namespace app;
+
 include_once "Cliente.php";
 include_once "Soporte.php";
 include_once "CintaVideo.php";
@@ -75,16 +77,13 @@ class Videoclub
                 foreach ($this->productos as $producto) {
                     if ($producto->getNumero() == $numeroSoporte) {
                         $cliente->alquilar($producto);
-                        /* 
-                        Return para salir de la función si ha sido encontrado,
-                        y la función de alquilar del cliente se encargará de mostrar el mensaje
-                        */
-                        return;
+                        return $this; // Para que no muestre mensajes de error si se completa correctamente.             
                     }
                 }
                 echo "<br>El producto " . $numeroSoporte . " aún no ha sido registrado<br>";
             }
         }
         echo "<br>El cliente " . $numeroCliente . " aún no ha sido registrado<br>";
+        return $this;
     }
 }

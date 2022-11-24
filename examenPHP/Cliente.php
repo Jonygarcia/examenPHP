@@ -1,4 +1,5 @@
 <?php
+namespace app;
 
 class Cliente
 {
@@ -33,7 +34,7 @@ class Cliente
         return $this->numSoportesAlquilados;
     }
 
-    public function alquilar(Soporte $s): bool
+    public function alquilar(Soporte $s)
     {
         if ($this->tieneAlquilado($s) == false && $this->getNumSoportesAlquilados() < $this->maxAlquilerConcurrente) {
             $this->numSoportesAlquilados++;
@@ -41,13 +42,12 @@ class Cliente
 
             echo "<br>El alquiler de " . $s->titulo . " se ha realizado correctamente";
             echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
-            return true;
         } else {
             echo $this->tieneAlquilado($s) == true ?  
             "<br>El producto ya lo tienes alquilado<br>" : 
             "<br>Has superado el máximo de alquileres concurrentes<br>";
-            return false;
         }
+        return $this;
     }
 
     public function tieneAlquilado(Soporte $s): bool

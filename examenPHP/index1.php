@@ -11,6 +11,8 @@ $soporte1->muestraResumen();
 
 include "CintaVideo.php";
 
+use app\CintaVideo;
+
 $miCinta = new CintaVideo("Los cazafantasmas", 23, 3.5, 107); 
 echo "<strong>" . $miCinta->titulo . "</strong>"; 
 echo "<br>Precio: " . $miCinta->getPrecio() . " euros"; 
