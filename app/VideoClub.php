@@ -85,7 +85,7 @@ class Videoclub
                             if ($producto->getNumero() == $numeroSoporte) {
                                 $saveProducto = $producto;
                                 $cliente->alquilar($producto);
-                                return $this; // Para que no muestre mensajes de error si se completa correctamente.             
+                                return $this;
                             }
                         }
                     } catch (SoporteYaAlquiladoException $e) {
@@ -96,13 +96,14 @@ class Videoclub
                 }
             }
 
-            if ($saveCliente === ""){
+            if ($saveCliente === "") {
                 throw new ClienteNoEncontradoException("El número no coincide con ninguno de los clientes registrados<br>");
             } else if ($saveProducto === "") {
                 throw new SoporteNoEncontradoException("El número no coincide con ninguno de los soportes registrados<br>");
             }
-            
         } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMensaje();
+        } catch (SoporteNoEncontradoException $e) {
             echo $e->getMensaje();
         }
         return $this;
