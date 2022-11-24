@@ -2,7 +2,6 @@
 namespace app;
 
 include_once "Cliente.php";
-include_once "Soporte.php";
 include_once "CintaVideo.php";
 include_once "Disco.php";
 include_once "Juego.php";
