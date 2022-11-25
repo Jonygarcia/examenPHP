@@ -4,9 +4,9 @@ namespace util;
 
 class CupoSuperadoException extends VideoclubException
 {
-    public function __construct($message, $code = 0)
+    public function __construct($message)
     {
-        parent::__construct($message, $code);
+        parent::__construct($message);
     }
 
     public function getMensaje()

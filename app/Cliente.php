@@ -43,6 +43,8 @@ class Cliente
             $this->numSoportesAlquilados++;
             array_push($this->soportesAlquilados, $s);
 
+            $s->alquilado = true;
+
             echo "<br>El alquiler de " . $s->titulo . " se ha realizado correctamente";
             echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
         } else {
@@ -64,6 +66,8 @@ class Cliente
             if ($value->getNumero() == $numSoporte) {
                 $this->numSoportesAlquilados--;
                 unset($this->soportesAlquilados[$key]);
+
+                $value->alquilado = false;
 
                 echo "<br>El soporte " . $value->titulo . " ha sido devuelto correctamente<br>";
                 return true;

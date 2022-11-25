@@ -25,6 +25,7 @@ abstract class Soporte implements Resumible
     protected $numero;
     private $precio;
     private const IVA = 0.21;
+    public $alquilado = false;
 
     public function __construct($titulo, $numero, $precio)
     {

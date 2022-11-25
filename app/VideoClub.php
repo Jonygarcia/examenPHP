@@ -16,10 +16,22 @@ class Videoclub
     private $numProductos = 0;
     private $socios = [];
     private $numSocios = 0;
+    private $numProductosAlquilados = 0;
+    private $numTotalAlquileres = 0;
 
     public function __construct($nombre)
     {
         $this->nombre = $nombre;
+    }
+
+    public function getNumProductosAlquilados()
+    {
+        return $this->numProductosAlquilados;
+    }
+
+    public function getNumTotalAlquileres()
+    {
+        return $this->numTotalAlquileres;
     }
 
     private function incluirProducto(Soporte $producto)
@@ -85,6 +97,8 @@ class Videoclub
                             if ($producto->getNumero() == $numeroSoporte) {
                                 $saveProducto = $producto;
                                 $cliente->alquilar($producto);
+                                $this->numProductosAlquilados++;
+                                $this->numTotalAlquileres++;
                                 return $this;
                             }
                         }
@@ -104,6 +118,49 @@ class Videoclub
         } catch (ClienteNoEncontradoException $e) {
             echo $e->getMensaje();
         } catch (SoporteNoEncontradoException $e) {
+            echo $e->getMensaje();
+        }
+        return $this;
+    }
+
+    public function alquilarSocioProductos(int $numSocio, array $numerosProductos)
+    {
+        $numProductosCoinciden = 0;
+        $saveCliente = "";
+        try {
+            // Comprobar si existe el cliente
+            foreach ($this->socios as $cliente) {
+                if ($cliente->getNumero() == $numSocio) {
+                    $saveCliente = $cliente;
+                }
+            }
+
+            if ($saveCliente == "") throw new ClienteNoEncontradoException("El número de socio " . $numSocio . " no existe en el registro<br>");
+
+            // Almacenar el número de productos que coinciden y comprobar si están alquilados
+            foreach ($numerosProductos as $value) {
+                foreach ($this->productos as $producto) {                 
+                    if ($value === $producto->getNumero()) {
+                        if ($producto->alquilado) throw new SoporteYaAlquiladoException("No se ha completado el alquiler, el producto " . $producto->titulo . " ya está alquilado<br>");
+                        $numProductosCoinciden++;
+                    } 
+                }
+            }
+
+            // Comparar el número de productos que coinciden con la cantidad de productos recibida en el array
+            if (count($numerosProductos) == $numProductosCoinciden) {
+                foreach ($numerosProductos as $value) {
+                    $this->alquilaSocioProducto($numSocio, $value);
+                }
+                return $this;
+            } else {
+                throw new SoporteNoEncontradoException("Alguno de los productos que ha introducido no ha sido encontrado<br>"); 
+            }
+        } catch (SoporteYaAlquiladoException $e) {
+            echo $e->getMensaje();
+        } catch (SoporteNoEncontradoException $e) {
+            echo $e->getMensaje();
+        } catch (ClienteNoEncontradoException $e) {
             echo $e->getMensaje();
         }
         return $this;

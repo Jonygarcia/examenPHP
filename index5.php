@@ -1,6 +1,7 @@
 <?php
 include_once "autoload.php"; // No incluimos nada más
 
+use app\Soporte;
 use app\VideoClub;
 
 $vc = new Videoclub("Severo 8A");
@@ -33,7 +34,11 @@ $vc->incluirSocio("Pablo Picasso", 2);
 //alquilo el soporte 6 al socio 1. 
 //no se puede porque el socio 1 tiene 2 alquileres como máximo 
 //? $vc->alquilaSocioProducto(2, 6);
-$vc->alquilaSocioProducto(2, 2)->alquilaSocioProducto(2, 3)->alquilaSocioProducto(2, 2)->alquilaSocioProducto(2, 6);
+// alquilar con métodos encadenados
+//? $vc->alquilaSocioProducto(2, 8)->alquilaSocioProducto(2, 3)->alquilaSocioProducto(2, 2)->alquilaSocioProducto(2, 6);
+
+// alquilar varios productos con métodos encadenados
+$vc->alquilarSocioProductos(1, [2, 4, 5])->alquilarSocioProductos(2, [1,3]);
 
 //listo los socios 
 $vc->listarSocios();
