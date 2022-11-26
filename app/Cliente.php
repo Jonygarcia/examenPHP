@@ -59,9 +59,9 @@ class Cliente
             array_push($this->soportesAlquilados, $s);
 
             $s->alquilado = true;
-
-            echo "<br>El alquiler de " . $s->titulo . " se ha realizado correctamente";
-            echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
+            //! He tenido que comentar el echo porque sino da error la cabecera al redirigir en docker.
+            // echo "<br>El alquiler de " . $s->titulo . " se ha realizado correctamente";
+            // echo "<br>Ahora tienes " . $this->numSoportesAlquilados . " soportes alquilados<br>";
         } else {
             echo $this->tieneAlquilado($s) == true ?
                 throw new SoporteYaAlquiladoException("El soporte " . $s->titulo . " ya lo tienes alquilado<br>") :
@@ -83,8 +83,8 @@ class Cliente
                 unset($this->soportesAlquilados[$key]);
 
                 $value->alquilado = false;
-
-                echo "<br>El soporte " . $value->titulo . " ha sido devuelto correctamente<br>";
+                //! He tenido que comentar el echo porque sino da error la cabecera al redirigir en docker.
+                // echo "<br>El soporte " . $value->titulo . " ha sido devuelto correctamente<br>";
                 return true;
             }
         }

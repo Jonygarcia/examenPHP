@@ -37,7 +37,8 @@ class Videoclub
     private function incluirProducto(Soporte $producto)
     {
         array_push($this->productos, $producto);
-        echo "<br>El producto " . $producto->titulo . " ha sido incluido con el identificador: " . $this->numProductos . "<br>";
+        //! He tenido que comentar el echo porque sino da error la cabecera al redirigir en docker.
+        // echo "<br>El producto " . $producto->titulo . " ha sido incluido con el identificador: " . $this->numProductos . "<br>";
     }
 
     public function incluirCintaVideo($titulo, $precio, $duracion)
@@ -66,7 +67,8 @@ class Videoclub
         $this->numSocios++;
         $cliente = new Cliente($nombre, $this->numSocios, $maxAlquileresConcurrentes);
         array_push($this->socios, $cliente);
-        echo "<br>El socio " . $nombre . " ha sido incluido con el identificador: " . $this->numSocios . "<br>";
+        //! He tenido que comentar el echo porque sino da error la cabecera al redirigir en docker.
+        // echo "<br>El socio " . $nombre . " ha sido incluido con el identificador: " . $this->numSocios . "<br>";
     }
 
     public function listarProductos()
