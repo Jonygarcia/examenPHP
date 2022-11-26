@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,6 @@
 
 <body>
     <?php
-    session_start();
     $user = $_SESSION["user"] ?? "";
     $clientes = $_SESSION["clientes"] ?? "";
     $productos = $_SESSION["productos"] ?? "";

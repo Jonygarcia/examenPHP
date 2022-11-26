@@ -8,8 +8,8 @@ if ($user == "usuario" && $password == "usuario") {
     $_SESSION["user"] = $user;
     header("location:mainCliente.php");
 } else if ($user == "admin" && $password == "admin"){
-    include_once "index5.php";
     session_start();
+    include_once "index5.php";
     $_SESSION["user"] = $user;
     $_SESSION["clientes"] = $vc->listarSocios();
     $_SESSION["productos"] = $vc->listarProductos();
