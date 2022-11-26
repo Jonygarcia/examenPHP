@@ -1,7 +1,5 @@
 <?php
 
-include_once "autoload.php";
-
 $user = $_POST["user"] ?? "";
 $password = $_POST["password"] ?? "";
 
