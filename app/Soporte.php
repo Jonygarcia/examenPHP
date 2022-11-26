@@ -51,8 +51,9 @@ abstract class Soporte implements Resumible
 
     public function muestraResumen()
     {
-        echo "</br><strong>" . $this->titulo . "</strong><br>
+        return "</br><strong>" . $this->titulo . "</strong><br>
             Número: " . $this->numero . "<br>
+            Alquilado: " . ($this->alquilado ? "Si" : "No") . "<br
             Precio: " . $this->precio . " €<br>
             Precio IVA incluido: " . $this->getPrecioConIva() . " €<br>";
     }

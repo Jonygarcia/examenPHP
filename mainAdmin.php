@@ -14,6 +14,8 @@
     <?php
     session_start();
     $user = $_SESSION["user"] ?? "";
+    $clientes = $_SESSION["clientes"] ?? "";
+    $productos = $_SESSION["productos"] ?? "";
 
     if ($user == "admin") { ?>
         <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-end">
@@ -23,6 +25,18 @@
         </nav>
         <div class="container col-4 mt-3 text-center">
             <h1 class="text-center mb-5 text-capitalize">Bienvenido <?= $_SESSION["user"] ?></h1>
+        </div>
+        <div class="container col-12 col-md-10">
+            <table class="table">
+                <thead>
+                    <th scope="col">Listado de Clientes</th>
+                    <th scope="col">Listado de Productos</th>
+                </thead>
+                <tbody>
+                    <td><?= $clientes ?></td>
+                    <td><?= $productos ?></td>
+                </tbody>
+            </table>
         </div>
     <?php } else { ?>
         <div class="container col-4 mt-5 text-center">

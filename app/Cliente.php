@@ -10,15 +10,19 @@ class Cliente
 {
     public $nombre;
     private $numero;
+    private $user;
+    private $password;
     private $soportesAlquilados = [];
     private $numSoportesAlquilados = 0;
     private $maxAlquilerConcurrente;
 
-    public function __construct($nombre, $numero, $maxAlquilerConcurrente = 3)
+    public function __construct($nombre, $numero, $maxAlquilerConcurrente = 3, $user = "", $password = "")
     {
         $this->nombre = $nombre;
-        $this->numero = $numero;
+        $this->numero = $numero;   
         $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        $this->user = ($user === "") ? str_replace(" ", "", $nombre) : $user;
+        $this->password = ($password === "") ? str_replace(" ", "", $nombre) : $password;
     }
 
     public function getNumero()
@@ -36,6 +40,16 @@ class Cliente
     public function getNumSoportesAlquilados()
     {
         return $this->numSoportesAlquilados;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     public function alquilar(Soporte $s)
@@ -79,17 +93,20 @@ class Cliente
 
     public function listaAlquileres()
     {
-        echo "<br>Actualmente tiene " . count($this->soportesAlquilados) . " soportes alquilados<br>";
+        $string =  "<br>Actualmente tiene " . count($this->soportesAlquilados) . " soportes alquilados:<br>";
         foreach ($this->soportesAlquilados as $value) {
-            $value->muestraResumen();
+            $string .= $value->muestraResumen();
         }
+        return $string;
     }
 
     public function muestraResumen()
     {
-        echo "</br><strong>" . $this->nombre . "</strong><br>
+        return "</br><strong>" . $this->nombre . "</strong><br>
+            Nombre de usuario: " . $this->user . "<br>
+            Contraseña: " . $this->password . "<br>
             Número: " . $this->numero . "<br>
-            Número máximo de alquileres: " . $this->maxAlquilerConcurrente;
-        $this->listaAlquileres();
+            Número máximo de alquileres: " . $this->maxAlquilerConcurrente .
+            $this->listaAlquileres();
     }
 }

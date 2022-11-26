@@ -18,8 +18,8 @@ class Disco extends Soporte
 
     public function muestraResumen()
     {
-        parent::muestraResumen();
-        echo "Idiomas: " . $this->idiomas . "<br>
+        return parent::muestraResumen() . 
+            "Idiomas: " . $this->idiomas . "<br>
             Formato de pantalla: " . $this->formatPantalla . "<br>";
     }
 }

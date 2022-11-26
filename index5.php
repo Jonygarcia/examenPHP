@@ -45,4 +45,4 @@ $vc->devolverSocioProducto(1, 2);
 $vc->devolverSocioProductos(2, [1, 3]);
 
 //listo los socios 
-$vc->listarSocios();
+echo $vc->listarSocios();
