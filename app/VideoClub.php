@@ -178,6 +178,7 @@ class Videoclub
                     try {
                         foreach ($this->productos as $producto) {
                             if ($producto->getNumero() == $numeroProducto) {
+                                if (!$saveCliente->tieneAlquilado($producto)) throw new SoporteNoEncontradoException("No se ha completado la devolucion, el producto " . $producto->titulo . " no lo tienes alquilado<br>");
                                 $saveProducto = $producto;
                                 $cliente->devolver($numeroProducto);
                                 $this->numProductosAlquilados--;
@@ -199,7 +200,7 @@ class Videoclub
             echo $e->getMensaje();
         } catch (SoporteNoEncontradoException $e) {
             echo $e->getMensaje();
-        }
+        } 
         return $this;
     }
 
@@ -221,7 +222,7 @@ class Videoclub
             foreach ($numerosProductos as $value) {
                 foreach ($this->productos as $producto) {
                     if ($value === $producto->getNumero()) {
-                        if (!$saveCliente->tieneAlquilado($producto)) throw new SoporteYaAlquiladoException("No se ha completado el alquiler, el producto " . $producto->titulo . " no lo tienes alquilado<br>");
+                        if (!$saveCliente->tieneAlquilado($producto)) throw new SoporteNoEncontradoException("No se ha completado la devolucion, el producto " . $producto->titulo . " no lo tienes alquilado<br>");
                         $numProductosCoinciden++;
                     }
                 }
@@ -236,8 +237,6 @@ class Videoclub
             } else {
                 throw new SoporteNoEncontradoException("Alguno de los productos que ha introducido no ha sido encontrado<br>");
             }
-        } catch (SoporteYaAlquiladoException $e) {
-            echo $e->getMensaje();
         } catch (SoporteNoEncontradoException $e) {
             echo $e->getMensaje();
         } catch (ClienteNoEncontradoException $e) {
