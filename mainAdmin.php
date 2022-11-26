@@ -12,9 +12,12 @@
 
 <body>
     <?php
-    $user = $_SESSION["user"] ?? "";
-    $clientes = $_SESSION["clientes"] ?? "";
-    $productos = $_SESSION["productos"] ?? "";
+    if (isset($_SESSION["user"])){
+        $user = $_SESSION["user"] ?? "";
+        $clientes = $_SESSION["clientes"] ?? "";
+        $productos = $_SESSION["productos"] ?? "";
+    
+    
 
     if ($user == "admin") { ?>
         <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-end">
@@ -42,7 +45,7 @@
             <h2>No has iniciado sesión</h2>
             <h6><a href="index.php">Ir al inicio de sesión</a></h6>
         </div>
-    <?php } ?>
+    <?php }} ?>
 </body>
 
 </html>

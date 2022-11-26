@@ -1,13 +1,15 @@
 <?php
 
+include_once "autoload.php";
+
 $user = $_POST["user"] ?? "";
 $password = $_POST["password"] ?? "";
 
-if ($user === "usuario" && $password === "usuario") {
+if ($user == "usuario" && $password == "usuario") {
     session_start();
     $_SESSION["user"] = $user;
     header("location:mainCliente.php");
-} else if ($user === "admin" && $password === "admin"){
+} else if ($user == "admin" && $password == "admin"){
     include_once "index5.php";
     session_start();
     $_SESSION["user"] = $user;
