@@ -206,7 +206,7 @@ class Videoclub
             echo $e->getMensaje();
         } catch (SoporteNoEncontradoException $e) {
             echo $e->getMensaje();
-        } 
+        }
         return $this;
     }
 

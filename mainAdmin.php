@@ -16,7 +16,7 @@
     $user = $_SESSION["user"] ?? "";
     $clientes = $_SESSION["clientes"] ?? "";
     $productos = $_SESSION["productos"] ?? "";
-    
+
     if ($user == "admin") { ?>
         <nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-end">
             <div class="nav navbar-nav">
