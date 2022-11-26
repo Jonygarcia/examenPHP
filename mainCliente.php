@@ -12,7 +12,6 @@
 
 <body>
     <?php
-    session_start();
     $user = $_SESSION["user"] ?? "";
 
     if ($user == "usuario") { ?>
